@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Submit Arrest Case</title>
+  <link rel="stylesheet" type="text/css" href="submit.css"> <!-- If you have a CSS stylesheet -->
+</head>
+<body style='background-image:URL("NYPD.jpg");background-repeat:no-repeat;background-position:center top;-webkit-background-size:100%;-moz-background-size:100%;-o-background-size:100%;background-size: 100%;'>
+<h1>Submit Arrest Case</h1>
+<div class="navigation-button">
+  <button onclick="window.location.href='index.html';">Back to Dashboard</button>
+</div>
+<br>
+<form action="/submit-arrest-case" method="post">
+  <label for="arrest_key">Arrest Key:</label>
+  <input type="text" id="arrest_key" name="arrest_key" required><br><br>
+
+  <label for="arrest_date">Arrest Date:</label>
+  <input type="date" id="arrest_date" name="arrest_date" required><br><br>
+
+
+  <label for="ofns_desc">Offense Description:</label>
+  <select id="ofns_desc" name="ofns_desc">
+    <option value="ADMINISTRATIVE CODES">ADMINISTRATIVE CODES</option>
+    <option value="AGRICULTURE & MRKTS LAW-UNCLASSIFIED">AGRICULTURE & MRKTS LAW-UNCLASSIFIED</option>
+    <option value="ASSAULT 3 & RELATED OFFENSES">ASSAULT 3 & RELATED OFFENSES</option>
+    <option value="CANNABIS RELATED OFFENSES">CANNABIS RELATED OFFENSES</option>
+    <option value="DANGEROUS WEAPONS">DANGEROUS WEAPONS</option>
+    <option value="DANGEROUS WEAPONS">DANGEROUS WEAPONS</option>
+    <option value="DISRUPTION OF A RELIGIOUS SERV">DISRUPTION OF A RELIGIOUS SERV</option>
+    <option value="DISRUPTION OF A RELIGIOUS SERV">DISRUPTION OF A RELIGIOUS SERV</option>
+    <option value="FELONY ASSAULT">FELONY ASSAULT</option>
+    <option value="FELONY SEX CRIMES">FELONY SEX CRIMES</option>
+    <option value="FRAUDS">FRAUDS</option>
+    <option value="GRAND LARCENY OF MOTOR VEHICLE">GRAND LARCENY OF MOTOR VEHICLE</option>
+    <option value="HOMICIDE-NEGLIGENT-VEHICLE">HOMICIDE-NEGLIGENT-VEHICLE</option>
+    <option value="INTOXICATED/IMPAIRED DRIVING">INTOXICATED/IMPAIRED DRIVING</option>
+    <option value="KIDNAPPING">KIDNAPPING</option>
+    <option value="MOVING INFRACTIONS">MOVING INFRACTIONS</option>
+    <option value="MURDER & NON-NEGL. MANSLAUGHTE">MURDER & NON-NEGL. MANSLAUGHTE</option>
+    <option value="OFFENSES AGAINST PUBLIC ADMINI">OFFENSES AGAINST PUBLIC ADMINI</option>
+    <option value="OFFENSES AGAINST THE PERSON">OFFENSES AGAINST THE PERSON</option>
+    <option value="OFFENSES RELATED TO CHILDREN">OFFENSES RELATED TO CHILDREN</option>
+    <option value="OTHER OFFENSES RELATED TO THEF"> OTHER OFFENSES RELATED TO THEF</option>
+    <option value="POSSESSION OF STOLEN PROPERTY">POSSESSION OF STOLEN PROPERTY</option>
+    <option value="RAPE">RAPE</option>
+    <option value="ROBBERY">ROBBERY</option>
+    <option value="BURGLARY">BURGLARY</option>
+    <option value="CRIMINAL TRESPASS">CRIMINAL TRESPASS</option>
+    <option value="CRIMINAL MISCHIEF & RELATED OF">CRIMINAL MISCHIEF & RELATED OF</option>
+    <option value="DANGEROUS DRUGS">DANGEROUS DRUGS</option>
+    <option value="FORGERY">FORGERY</option>
+    <option value="GRAND LARCENY">GRAND LARCENY</option>
+    <option value="INTOXICATED & IMPAIRED DRIVING">INTOXICATED & IMPAIRED DRIVING</option>
+    <option value="MISCELLANEOUS PENAL LAW">MISCELLANEOUS PENAL LAW</option>
+    <option value="PETIT LARCENY">PETIT LARCENY</option>
+    <option value="SEX CRIMES">SEX CRIMES</option>
+    <option value="VEHICLE AND TRAFFIC LAWS">VEHICLE AND TRAFFIC LAWS</option>
+    <option value="THEFT OF SERVICES">THEFT OF SERVICES</option>
+    <option value="UNLAWFUL POSS. WEAP. ON SCHOOL">UNLAWFUL POSS. WEAP. ON SCHOOL</option>
+    <option value="VEHICLE AND TRAFFIC LAWS">VEHICLE AND TRAFFIC LAWS</option>
+  </select><br><br>
+
+  <label for="age_group">Age Group:</label>
+  <select id="age_group" name="age_group">
+    <option value="<18"><18</option>
+    <option value="18-24">18-24</option>
+    <option value="25-44">25-44</option>
+    <option value="45-64">45-64</option>
+    <option value="65+">65+</option>
+  </select><br><br>
+
+  <label for="perp_sex">Perpetrator Sex:</label>
+  <select id="perp_sex" name="perp_sex">
+    <option value="M">Male</option>
+    <option value="F">Female</option>
+    <option value="U">None or not applicable</option>
+  </select><br><br>
+
+  <label for="perp_race">Perpetrator Race:</label>
+  <select id="perp_race" name="perp_race">
+    <option value="AMERICAN INDIAN/ALASKAN NATIVE">AMERICAN INDIAN/ALASKAN NATIVE</option>
+    <option value="ASIAN / PACIFIC ISLANDER">ASIAN / PACIFIC ISLANDER</option>
+    <option value="BLACK">BLACK</option>
+    <option value="BLACK">BLACK</option>
+    <option value="BLACK HISPANIC">BLACK HISPANIC</option>
+    <option value="UNKNOWN">UNKNOWN</option>
+    <option value="WHITE">WHITE</option>
+    <option value="WHITE HISPANIC">WHITE HISPANIC</option>
+  </select><br><br>
+
+  <div class="show-more" onclick="toggleOptionalFields()">Show More Optional Fields</div>
+
+  <div class="optional-fields">
+    <label for="pd_cd">PD Code:</label>
+    <input type="number" id="pd_cd" name="pd_cd"><br><br>
+
+    <label for="pd_desc">PD Description:</label>
+    <input type="text" id="pd_desc" name="pd_desc"><br><br>
+
+    <label for="ky_cd">Key Code:</label>
+    <input type="number" id="ky_cd" name="ky_cd"><br><br>
+
+    <label for="law_code">Law Code:</label>
+    <input type="text" id="law_code" name="law_code"><br><br>
+
+    <label for="law_cat_cd">Law Category Code:</label>
+    <input type="text" id="law_cat_cd" name="law_cat_cd"><br><br>
+
+    <label for="arrest_boro">Arrest Borough:</label>
+    <input type="text" id="arrest_boro" name="arrest_boro"><br><br>
+
+    <label for="arrest_precinct">Arrest Precinct:</label>
+    <input type="number" id="arrest_precinct" name="arrest_precinct"><br><br>
+
+    <label for="jurisdiction_code">Jurisdiction Code:</label>
+    <input type="number" id="jurisdiction_code" name="jurisdiction_code"><br><br>
+
+    <label for="x_coord_cd">X Coordinate:</label>
+    <input type="number" id="x_coord_cd" name="x_coord_cd"><br><br>
+
+    <label for="y_coord_cd">Y Coordinate:</label>
+    <input type="number" id="y_coord_cd" name="y_coord_cd"><br><br>
+
+    <label for="latitude">Latitude:</label>
+    <input type="number" step="any" id="latitude" name="latitude"><br><br>
+
+    <label for="longitude">Longitude:</label>
+    <input type="number" step="any" id="longitude" name="longitude"><br><br>
+
+    <label for="georeferenced_column">Georeferenced Column:</label>
+    <input type="text" id="georeferenced_column" name="georeferenced_column"><br><br>
+  </div>
+
+  <input type="submit" value="Submit">
+</form>
+<script src="submit-arrest-case.js"></script>
+</body>
+</html>

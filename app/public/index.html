@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html>
+<head>
+  <title>NYPD Arrest Data Dashboard</title>
+  <link type="text/css" rel="stylesheet" href="elegant-aero.css" />
+  <link rel="stylesheet" type="text/css" href="dashboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+
+</head>
+  <body style='background-image:URL("NYPD.jpg");background-repeat:no-repeat;background-position:center top;-webkit-background-size:100%;-moz-background-size:100%;-o-background-size:100%;background-size: 100%;'>
+  <h1>NYPD Arrest Data Summary Dashboard</h1>
+  <div class="navigation-button">
+    <button onclick="window.location.href='submit-arrest-case.html';">Submit New Arrest Case</button>
+  </div>
+  <div class="dashboard-container">
+    <div class="dashboard-section">
+      <button id="getSexSummary" type="button">Get Sex Summary</button>
+      <button id="getRealtimeSexSummary" type="button">Realtime Sex Summary</button>
+      <div id="sexSummary">
+        <canvas id="sexSummaryChart"></canvas>
+      </div>
+    </div>
+    <div class="dashboard-section">
+      <button id="getAgeSummary" type="button">Get Age Summary</button>
+      <button id="getRealtimeAgeSummary" type="button">Realtime Age Summary</button>
+      <div id="ageSummary">
+        <canvas id="ageSummaryChart"></canvas>
+
+      </div>
+    </div>
+    <div class="dashboard-section">
+      <button id="getRaceSummary" type="button">Get Race Summary</button>
+      <button id="getRealtimeRaceSummary" type="button">Realtime Race Summary</button>
+      <div id="raceSummary">
+        <canvas id="raceSummaryChart"></canvas>
+
+      </div>
+    </div>
+  </div>
+
+  <p style="margin-bottom:2cm"/>
+
+  <script src="dashboard.js"></script>
+
+
+  </body>
+</html>
