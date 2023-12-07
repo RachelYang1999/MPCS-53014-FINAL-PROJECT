@@ -78,11 +78,79 @@ Processes real-time data and updates the system with the most current informatio
 #### Serving Layer
 Integrates batch-processed historical data and real-time data for efficient query processing and data presentation. It serves data through APIs to the frontend.
 
-- **APIs**: Including `/sex_summary`, `/age_summary`, `/race_summary`, and `/submit-arrest-case`.
+##### Back-End API Specifications
+
+###### 1. Sex Summary (`/sex_summary`)
+- **Method:** GET
+- **Description:** Retrieves a summary of arrests grouped by the perpetrator's sex, combining data from both batch and speed layers.
+- **Response Format:** JSON
+- **Sample Response:**
+  ```json
+  { "F": 30000, "M": 140000, "U": 4000 }
+  ```
+
+###### 2. Age Summary (`/age_summary`)
+- **Method:** GET
+- **Description:** Fetches an aggregated count of arrests by age groups.
+- **Response Format:** JSON
+- **Sample Response:**
+  ```json
+  { "<18": 5000, "18-24": 20000, "25-44": 60000, "45-64": 30000, "65+": 1000 }
+  ```
+
+###### 3. Race Summary (`/race_summary`)
+- **Method:** GET
+- **Description:** Provides a summary of arrests categorized by the perpetrator's race.
+- **Response Format:** JSON
+- **Sample Response:**
+  ```json
+  { "White": 25000, "Black": 70000, "Asian": 5000, "Hispanic": 40000, "Other": 3000 }
+  ```
+
+###### 4. Real-Time Summary APIs (e.g., `/sex_summary_realtime`)
+- **Method:** GET
+- **Description:** Similar to the above APIs but focuses specifically on real-time data, providing the most current insights.
+
+###### 5. Submit Arrest Case (`/submit-arrest-case`)
+- **Method:** POST
+- **Description:** Responsible for submitting a new arrest case, sending data to Kafka for real-time processing.
+- **Request Body Parameters:**
+  - `arrest_key` (String): Unique identifier for the arrest.
+  - `arrest_date` (String): Date of the arrest.
+  - `ofns_desc` (String): Description of the offense.
+  - `age_group` (String): Age group of the perpetrator.
+  - `perp_sex` (String): Sex of the perpetrator.
+  - `perp_race` (String): Race of the perpetrator.
+- **Example Request Body:**
+  ```json
+  {
+    "arrest_key": "123456789",
+    "arrest_date": "2023-12-07",
+    "ofns_desc": "LARCENY",
+    "age_group": "25-44",
+    "perp_sex": "M",
+    "perp_race": "White"
+  }
+  ```
+- **Response:**
+  - **Success:** A JSON object containing a success message.
+  - **Error:** An error message for issues like Kafka unavailability or invalid input.
+- **Sample Success Response:**
+  ```json
+  { "message": "Arrest case submitted successfully." }
+  ```
+
 - **Frontend Pages**: Dashboard displaying summaries and a page for submitting new arrest cases.
+
+  - Dashboard with data from batch layer (no realtime data included)
+    - ![dashboard1.png](img%2Fdashboard1.png)
+  - Dashboard with realtime data (integrated both batch layer and speeding layer)
+    - ![dashboard2.png](img%2Fdashboard2.png)
+  - Submission page for new arrest case data
+    - ![submit_case.png](img%2Fsubmit_case.png)
+  - Dashboard with updated realtime data from the previous step
+    - ![dashboard_updated.png](img%2Fdashboard_updated.png)
 
 ### Conclusion
 The NYPD Arrest Data Application offers a comprehensive visualization and analysis tool for NYC arrest data, showcasing a successful integration of big data technologies for batch and real-time processing.
 
----
-Generated on: 12/07/2023
